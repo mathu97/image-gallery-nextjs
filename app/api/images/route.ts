@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 
 // Initialize Firebase Admin SDK if it hasn't been already
 if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_CONFIG!); // Replace with your Firebase service account key
+  const serviceAccount = JSON.parse(process.env.ADMIN_CONFIG!); // Replace with your Firebase service account key
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
