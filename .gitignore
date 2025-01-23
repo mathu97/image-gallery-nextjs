@@ -43,3 +43,4 @@ next-env.d.ts
 images/*
 scripts/*
 .firebaserc
+firebase-admin-config.json
