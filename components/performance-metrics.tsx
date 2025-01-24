@@ -32,9 +32,8 @@ export function PerformanceMetrics({
   }, []);
 
   useEffect(() => {
-    window.addEventListener("load", () => {
+    const updateMetrics = () => {
       setTimeout(() => {
-        console.log(JSON.stringify(performance));
         const navTiming = performance.getEntriesByType(
           "navigation"
         )[0] as PerformanceNavigationTiming;
@@ -55,13 +54,22 @@ export function PerformanceMetrics({
           isCached: navTiming.transferSize === 0,
         });
       }, 0);
-    });
+    };
+
+    if (document.readyState === "complete") {
+      updateMetrics();
+    } else {
+      window.addEventListener("load", updateMetrics);
+      return () => window.removeEventListener("load", updateMetrics);
+    }
   }, [metrics.largestContentfulPaint]);
 
   return (
     <Card className="mb-8">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle>Performance Metrics</CardTitle>
+        <CardTitle className="text-sm font-medium">
+          Performance Metrics
+        </CardTitle>
         <HeadersDialog headers={headers} />
       </CardHeader>
       <CardContent>
