@@ -45,3 +45,5 @@ scripts/*
 .firebaserc
 firebase-admin-config.json
 apphosting.local.yaml
+dist
+firebase-debug.log
