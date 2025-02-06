@@ -1,4 +1,4 @@
-import { ImageGallery } from "@/components/image-gallery-static";
+// import { ImageGallery } from "@/components/image-gallery-static";
 
 export default function StaticPage() {
   return (
@@ -6,7 +6,7 @@ export default function StaticPage() {
       <h1 className="text-3xl font-bold mb-8 text-center">
         Static Image Gallery
       </h1>
-      <ImageGallery />
+      {/* <ImageGallery /> */}
     </div>
   );
 }
