@@ -1,16 +1,6 @@
 import { NextResponse } from "next/server";
 import * as admin from "firebase-admin";
 
-// Initialize Firebase Admin SDK if it hasn't been already
-if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(process.env.ADMIN_CONFIG!); // Replace with your Firebase service account key
-
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "mathusan-fwp.appspot.com", // Replace with your Firebase Storage bucket name
-  });
-}
-
 const bucket = admin.storage().bucket();
 
 export async function GET(request: Request) {
