@@ -3,11 +3,11 @@ import * as admin from "firebase-admin";
 
 // Initialize Firebase Admin SDK if it hasn't been already
 if (!admin.apps.length) {
-  if (!process.env.ADMIN_CONFIG) {
-    throw new Error("ADMIN_CONFIG environment variable is not set.");
+  if (!process.env.MATHUSAN_ADMIN_CONFIG) {
+    throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
   }
 
-  const serviceAccount = JSON.parse(process.env.ADMIN_CONFIG); // Replace with your Firebase service account key
+  const serviceAccount = JSON.parse(process.env.MATHUSAN_ADMIN_CONFIG); // Replace with your Firebase service account key
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

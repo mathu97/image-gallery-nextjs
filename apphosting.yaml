@@ -22,8 +22,10 @@ runConfig:
   # - variable: MY_SECRET
   #   secret: mySecretRef
 env:
-  - variable: ADMIN_CONFIG
-    secret: FIREBASE_ADMIN_CONFIG
-    availability:
-      - BUILD
-      - RUNTIME
+  # - variable: ADMIN_CONFIG
+  #   secret: FIREBASE_ADMIN_CONFIG
+  #   availability:
+  #     - BUILD
+  #     - RUNTIME
+  - variable: MATHUSAN_ADMIN_CONFIG
+    secret: MATHUSAN_ADMIN_CONFIG
