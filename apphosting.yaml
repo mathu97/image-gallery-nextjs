@@ -24,3 +24,6 @@ runConfig:
 env:
   - variable: ADMIN_CONFIG
     secret: FIREBASE_ADMIN_CONFIG
+    availability:
+      - BUILD
+      - RUNTIME
