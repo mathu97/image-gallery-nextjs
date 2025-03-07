@@ -10,7 +10,8 @@ export default async function Home() {
       <h1 className="text-3xl font-bold mb-8 text-center">Image Gallery</h1>
       <div>
         env var test - server: &quot;{process.env.TEST_ENV}&quot;, client:
-        &quot;{process.env.NEXT_PUBLIC_TEST_ENV}&quot;
+        &quot;{process.env.NEXT_PUBLIC_TEST_ENV}&quot;, conf: &quot;
+        {process.env.MATHUSAN_ADMIN_CONFIG}&quot;
       </div>
       <ImageGallery />
     </div>
