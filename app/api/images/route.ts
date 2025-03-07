@@ -1,23 +1,24 @@
 import { NextResponse } from "next/server";
 import * as admin from "firebase-admin";
 
-// Initialize Firebase Admin SDK if it hasn't been already
-if (!admin.apps.length) {
-  if (!process.env.MATHUSAN_ADMIN_CONFIG) {
-    throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
+export async function GET(request: Request) {
+  // Initialize Firebase Admin SDK if it hasn't been already
+  if (!admin.apps.length) {
+    if (!process.env.MATHUSAN_ADMIN_CONFIG) {
+      throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
+    }
+
+    console.log(`MATHUSAN_ADMIN_CONFIG: ${process.env.MATHUSAN_ADMIN_CONFIG}`);
+    const serviceAccount = JSON.parse(process.env.MATHUSAN_ADMIN_CONFIG); // Replace with your Firebase service account key
+
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      storageBucket: "mathusan-fwp.appspot.com", // Replace with your Firebase Storage bucket name
+    });
   }
 
-  const serviceAccount = JSON.parse(process.env.MATHUSAN_ADMIN_CONFIG); // Replace with your Firebase service account key
+  const bucket = admin.storage().bucket();
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "mathusan-fwp.appspot.com", // Replace with your Firebase Storage bucket name
-  });
-}
-
-const bucket = admin.storage().bucket();
-
-export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = Number.parseInt(searchParams.get("page") || "1", 10);
   const limit = 20;
