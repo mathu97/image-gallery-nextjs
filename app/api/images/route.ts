@@ -9,7 +9,9 @@ if (!admin.apps.length) {
 
   console.log(`MATHUSAN_ADMIN_CONFIG: ${process.env.MATHUSAN_ADMIN_CONFIG}`);
 
-  const serviceAccount = JSON.parse(process.env.MATHUSAN_ADMIN_CONFIG); // Replace with your Firebase service account key
+  const serviceAccount = JSON.parse(
+    process.env.MATHUSAN_ADMIN_CONFIG.replace(/\n/gm, "\n")
+  ); // Replace with your Firebase service account key
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
