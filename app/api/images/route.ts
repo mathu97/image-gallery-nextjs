@@ -3,19 +3,18 @@ import * as admin from "firebase-admin";
 
 // Initialize Firebase Admin SDK if it hasn't been already
 if (!admin.apps.length) {
-  if (!process.env.MATHUSAN_ADMIN_CONFIG) {
+  const ADMIN_CONFIG = process.env.MATHUSAN_ADMIN_CONFIG?.replace(/\n/gm, "\n");
+  if (!ADMIN_CONFIG) {
     throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
   }
 
-  console.log(`MATHUSAN_ADMIN_CONFIG: ${process.env.MATHUSAN_ADMIN_CONFIG}`);
+  console.log(`MATHUSAN_ADMIN_CONFIG: ${ADMIN_CONFIG}`);
 
-  const serviceAccount = JSON.parse(
-    process.env.MATHUSAN_ADMIN_CONFIG.replace(/\n/gm, "\n")
-  ); // Replace with your Firebase service account key
+  const serviceAccount = JSON.parse(ADMIN_CONFIG); // Replace with your Firebase service account key
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    storageBucket: "mathusan-fwp.appspot.com", // Replace with your Firebase Storage bucket name
+    storageBucket: "final-testing-cli-fah.firebasestorage.app", // Replace with your Firebase Storage bucket name
   });
 }
 
