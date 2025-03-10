@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "apphosting:build": "FRAMEWORK_VERSION=${14.0.4} apphosting-adapter-nextjs-build"
+    "apphosting:build": "FRAMEWORK_VERSION=14.0.4 apphosting-adapter-nextjs-build"
   },
   "dependencies": {
     "@apphosting/adapter-nextjs": "^14.0.12-next.1",
