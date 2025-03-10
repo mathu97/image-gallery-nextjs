@@ -29,20 +29,20 @@ export function ImageGallery() {
   }, []);
 
   return (
-    <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((image) => (
-          <div key={image.id} className="relative aspect-square">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full">
+      <div className="container px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
+          {images.map((image) => (
             <Image
               src={image.url || "/placeholder.svg"}
               alt={image.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover rounded-lg"
+              height={300}
+              width={300}
+              className="rounded-lg object-cover"
               loading="lazy"
             />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       {isFetching && (
         <div className="text-center mt-4">
