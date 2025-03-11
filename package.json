@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "apphosting:build": "npm install --legacy-peer-deps && FRAMEWORK_VERSION=14.2.24 apphosting-adapter-angular-build"
   },
   "dependencies": {
     "@apphosting/adapter-nextjs": "^14.0.12-next.1",
