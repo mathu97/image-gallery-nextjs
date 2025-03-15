@@ -1,24 +1,24 @@
 import { NextResponse } from "next/server";
-import * as admin from "firebase-admin";
+// import * as admin from "firebase-admin";
 
-// Initialize Firebase Admin SDK if it hasn't been already
-if (!admin.apps.length) {
-  const ADMIN_CONFIG = process.env.MATHUSAN_ADMIN_CONFIG?.replace(/\n/gm, "\n");
-  if (!ADMIN_CONFIG) {
-    throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
-  }
+// // Initialize Firebase Admin SDK if it hasn't been already
+// if (!admin.apps.length) {
+//   const ADMIN_CONFIG = process.env.MATHUSAN_ADMIN_CONFIG?.replace(/\n/gm, "\n");
+//   if (!ADMIN_CONFIG) {
+//     throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
+//   }
 
-  console.log(`MATHUSAN_ADMIN_CONFIG: ${ADMIN_CONFIG}`);
+//   console.log(`MATHUSAN_ADMIN_CONFIG: ${ADMIN_CONFIG}`);
 
-  const serviceAccount = JSON.parse(ADMIN_CONFIG); // Replace with your Firebase service account key
+//   const serviceAccount = JSON.parse(ADMIN_CONFIG); // Replace with your Firebase service account key
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "final-testing-cli-fah.firebasestorage.app", // Replace with your Firebase Storage bucket name
-  });
-}
+//   admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//     storageBucket: "final-testing-cli-fah.firebasestorage.app", // Replace with your Firebase Storage bucket name
+//   });
+// }
 
-const bucket = admin.storage().bucket();
+// const bucket = admin.storage().bucket();
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
