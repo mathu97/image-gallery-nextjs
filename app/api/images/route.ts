@@ -8,15 +8,15 @@ if (!admin.apps.length) {
     throw new Error("MATHUSAN_ADMIN_CONFIG environment variable is not set.");
   }
 
-  if (!process.env.FIREBASE_WEBAPP_CONFIG) {
+  if (!process.env.FIREBASE_CONFIG) {
     throw new Error(
-      "FIREBASE_WEBAPP_CONFIG environment variable is not set, this should be automatically available if deployed to Firebase App Hosting"
+      "FIREBASE_CONFIG environment variable is not set, this should be automatically available if deployed to Firebase App Hosting"
     );
   }
 
-  const webAppConfig = JSON.parse(process.env.FIREBASE_WEBAPP_CONFIG);
+  const webAppConfig = JSON.parse(process.env.FIREBASE_CONFIG);
   if (!webAppConfig.storageBucket) {
-    throw new Error("storageBucket is required in FIREBASE_WEBAPP_CONFIG");
+    throw new Error("storageBucket is required in FIREBASE_CONFIG");
   }
   const serviceAccount = JSON.parse(ADMIN_CONFIG); // Replace with your Firebase service account key
 
