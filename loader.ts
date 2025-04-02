@@ -18,6 +18,9 @@ export default function myImageLoader({
   ];
 
   const encodedOperations = encodeURIComponent(JSON.stringify(operations));
+  fetch(
+    `https://us-central1-fir-testing-89aa3.cloudfunctions.net/helloWorld`
+  ).then((res) => res.json());
 
   return `https://us-central1-fir-testing-89aa3.cloudfunctions.net/ext-image-processing-api-handler/process?operations=${encodedOperations}`;
 }
