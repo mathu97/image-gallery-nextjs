@@ -1,8 +1,8 @@
-runConfig:
-  vpcAccess:
-    egress: PRIVATE_RANGES_ONLY
-  networkInterfaces:
-    - network: default
+# runConfig:
+#   vpcAccess:
+#     egress: PRIVATE_RANGES_ONLY
+#   networkInterfaces:
+#     - network: default
 env:
   - variable: MATHUSAN_ADMIN_CONFIG
     secret: MATHUSAN_ADMIN_CONFIG
