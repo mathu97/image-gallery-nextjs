@@ -51,7 +51,7 @@ export function ImageGallery() {
         {images.map((image) => (
           <div key={image.id} className="relative aspect-square">
             <Image
-              src={"/images/image_1.png" || "/placeholder.svg"}
+              src={"/images/image_1.png"}
               alt={image.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
