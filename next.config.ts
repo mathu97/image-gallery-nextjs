@@ -9,15 +9,15 @@ const nextConfig: NextConfig = {
     loader: "custom",
     loaderFile: "./loader.ts",
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/_fah/images/:path*",
-  //       destination:
-  //         "https://us-central1-fir-testing-89aa3.cloudfunctions.net/ext-image-processing-api-handler/:path*",
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      {
+        source: "/_fah/images/:path*",
+        destination:
+          "https://us-central1-fir-testing-89aa3.cloudfunctions.net/ext-image-processing-api-handler/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
