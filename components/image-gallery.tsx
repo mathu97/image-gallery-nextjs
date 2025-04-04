@@ -13,10 +13,27 @@ interface ImageData {
 export function ImageGallery() {
   const [images, setImages] = useState<ImageData[]>([]);
   const [page, setPage] = useState(1);
+  const imagesPerPage = 66; // Number of images to load per "page"
 
   const fetchImages = useCallback(async () => {
-    const res = await fetch(`/api/images?page=${page}`);
-    const newImages = await res.json();
+    // Instead of API fetch, we'll simulate pagination with local images
+    const startIndex = (page - 1) * imagesPerPage;
+    const endIndex = startIndex + imagesPerPage;
+
+    // Using the image_<number>.png naming format
+    const newImages: ImageData[] = [];
+    for (let i = startIndex + 1; i <= endIndex; i++) {
+      // Stop adding images if we've reached a reasonable limit
+      // You'll need to adjust this based on how many images you actually have
+      if (i > 66) break;
+
+      newImages.push({
+        id: i,
+        url: `/images/image_${i}.png`, // Using the correct naming format
+        title: `Image ${i}`,
+      });
+    }
+
     setImages((prevImages) => [...prevImages, ...newImages]);
     setPage((prevPage) => prevPage + 1);
     setIsFetching(false);
@@ -34,7 +51,7 @@ export function ImageGallery() {
         {images.map((image) => (
           <div key={image.id} className="relative aspect-square">
             <Image
-              src={image.url || "/placeholder.svg"}
+              src={"/images/image_1.png" || "/placeholder.svg"}
               alt={image.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
